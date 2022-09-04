@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {COURSES} from '../../db-data';
 
 @Component({
   selector: 'course-card',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseCardComponent implements OnInit {
 
-  title = 'Angular Core Deep Dive'
+  @Input()
+  title;
 
   constructor() { }
 
