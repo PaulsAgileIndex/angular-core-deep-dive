@@ -8,6 +8,7 @@ import {COURSES} from '../db-data';
 })
 export class AppComponent {
 
+  title = '';
 
 
 }
