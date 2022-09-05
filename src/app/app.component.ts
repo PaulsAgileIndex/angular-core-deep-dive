@@ -12,5 +12,4 @@ export class AppComponent {
   rxjsCourse = COURSES[1];
   ngrxCourse = COURSES[2];
 
-
 }
