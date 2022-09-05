@@ -1,0 +1,10 @@
+
+/* Also called state class because it only applied to courses of type beginner: */
+.course-card.beginner {
+  background: lightyellow;
+}
+
+.course-card.advanced {
+  background: lightpink;
+}
+

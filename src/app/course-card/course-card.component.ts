@@ -31,4 +31,19 @@ export class CourseCardComponent implements OnInit {
   isImageVisible() {
     return this.course && this.course.iconUrl
   }
+
+  /**
+   * Returns a configuration object which is conditional true or false
+   */
+  cardClasses() {
+    // // This is a conditional configuration object: {'beginner': true}
+    //   return {'beginner': this.course.category == 'BEGINNER'};
+
+    // Better approach:
+    if (this.course.category == 'BEGINNER') {
+      return ['beginner']
+     } else if (this.course.category == 'ADVANCED') {
+      return ['advanced']
+    }
+  }
 }
