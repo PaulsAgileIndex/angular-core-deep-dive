@@ -15,6 +15,9 @@ export class CourseCardComponent implements OnInit {
   @Output('courseSelected')
   courseEmitter = new EventEmitter<Course>();
 
+  @Input()
+  cardIndex: number
+
   constructor() { }
 
   ngOnInit(): void {
