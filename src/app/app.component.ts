@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {COURSES} from '../db-data';
 import {Course} from './model/course';
+import {CourseCardComponent} from './course-card/course-card.component';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +11,11 @@ import {Course} from './model/course';
 export class AppComponent {
 
   courses = COURSES;
-  secondCourse = COURSES[1];
 
-  startDate = new Date(2000, 0, 1);
-  title = COURSES[0].description;
-  price = 9.992434;
-  rate = 0.67
+  @ViewChild(CourseCardComponent)
+  card: CourseCardComponent
 
   onCourseSelected(course: Course) {
-    console.log(course);
+    console.log(this.card);
   }
 }
