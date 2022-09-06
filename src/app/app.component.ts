@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, QueryList, ViewChildren} from '@angular/core';
 import {COURSES} from '../db-data';
 import {Course} from './model/course';
 import {CourseCardComponent} from './course-card/course-card.component';
@@ -12,28 +12,46 @@ export class AppComponent implements AfterViewInit {
 
   courses = COURSES;
 
-  @ViewChild('cardRef1', {read: ElementRef})
-  card1: CourseCardComponent
+  // 1
+  @ViewChildren(CourseCardComponent)
+  cards: QueryList<CourseCardComponent>;
 
-  @ViewChild('myContainer')
-  containerDiv: ElementRef;
-
-  @ViewChild('courseImage')
-  courseImage: ElementRef
+  // 2
+  // @ViewChildren(CourseCardComponent, {read: ElementRef})
+  // cards: QueryList<ElementRef>;
 
   constructor() {
-    // Not available at construction time
-    console.log("card1: ",  this.card1);
+
   }
 
   ngAfterViewInit(): void {
-    // Earliest moment when view child is available
-    console.log("card1: ",  this.card1);
+    // 1
+    // console.log('first card: ', this.cards.first);
+    // console.log('last card: ', this.cards.last);
+    // console.log(this.cards)
+    this.cards.changes.subscribe(
+      cards => console.log(cards)
+    );
+
+    // 2
+    // console.log(this.cards)
   }
 
   onCourseSelected(course: Course) {
-    // console.log("card1: ",  this.card1);
-    // console.log("containerDiv: ", this.containerDiv)
-    console.log("courseImage: ",  this.courseImage);
+
   }
+
+  onCoursesEdited() {
+    this.courses.push(
+      {
+        id: this.cards.length,
+        description: 'Angular Core Deep Dive',
+        iconUrl: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-core-in-depth-small.png',
+        longDescription: 'A detailed walk-through of the most important part of Angular - the Core and Common modules',
+        category: 'INTERMEDIATE',
+        lessonsCount: 10
+      }
+    );
+  }
+
 }
