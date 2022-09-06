@@ -46,4 +46,11 @@ export class CourseCardComponent implements OnInit {
       return ['advanced']
     }
   }
+
+  cardStyle() {
+    return {
+      // 'text-decoration': 'underline'
+      'background-image': 'url(' + this.course.iconUrl + ')'
+    };
+  }
 }

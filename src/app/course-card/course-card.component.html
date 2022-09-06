@@ -1,24 +1,11 @@
-<!--<div class="course-card"-->
-<!--     *ngIf="course"-->
-<!--     [ngClass]="'beginner'"-->
-<!--&gt;-->
-<!--<div class="course-card"-->
-<!--     *ngIf="course"-->
-<!--     [ngClass]="['beginner']"-->
-<!--&gt;-->
-<!--<div class="course-card"-->
-<!--     *ngIf="course"-->
-<!--This is a configuration object:-->
-<!--     [ngClass]="{'beginner': true}"-->
-<!--&gt;-->
-
 <div class="course-card"
      *ngIf="course"
-     [ngClass]="cardClasses()"
->
-  <div class="course-title">
+     [ngClass]="cardClasses()">
+
+  <div class="course-title" [ngStyle]="cardStyle()">
     {{ cardIndex + ' ' + course.description }}
   </div>
+
   <img width="300" alt="Angular Logo"
        *ngIf="isImageVisible(); else noImage"
        [src]="course.iconUrl">
