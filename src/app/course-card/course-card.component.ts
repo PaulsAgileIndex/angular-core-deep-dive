@@ -47,10 +47,4 @@ export class CourseCardComponent implements OnInit {
     }
   }
 
-  cardStyle() {
-    return {
-      // 'text-decoration': 'underline'
-      'background-image': 'url(' + this.course.iconUrl + ')'
-    };
-  }
 }

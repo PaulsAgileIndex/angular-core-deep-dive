@@ -3,13 +3,34 @@
        src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
 </div>
 
-<button (click)="onCoursesEdited()">Edit Courses</button>
+<div class="courses" *ngIf="courses[0] as course">
 
-<div class="courses" #myContainer>
   <course-card
-    *ngFor="let course of courses"
     (courseSelected)="onCourseSelected($event)"
     [course]="course">
+    <!-- Start Content Projection Input -->
+    <div class="course-image">
+      <img width="300" alt="Angular Logo" [src]="course.iconUrl">
+      <h4>also getting projected</h4>
+    </div>
+
+    <h5>total lessons: 5</h5>
+
+    <div class="course-description">
+      {{ course.longDescription }}
+    </div>
+
+    Edit Description: <textarea></textarea>
+    <!-- End Content Projection Input -->
+  </course-card>
+
+  <course-card
+    (courseSelected)="onCourseSelected($event)"
+    [course]="courses[1]">
+
+    <img width="300" alt="Angular Logo" [src]="courses[1].iconUrl">
+    <h5>total lessons: 71</h5>
+
   </course-card>
 
 </div>
